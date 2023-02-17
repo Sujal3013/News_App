@@ -1,14 +1,13 @@
 package com.example.newsapp.Database
 
 import android.content.Context
-import android.provider.CalendarContract.Instances
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.example.newsapp.Article
+import androidx.room.*
+import com.example.newsapp.modals.Article
 
-@Database(entities = [Article::class],
-version=1)
+@Database
+    (entities = [Article::class],
+     version=1)
+@TypeConverters(Converters::class)
 abstract class Article_Database:RoomDatabase() {
 
     abstract fun getArticleDao():ArticleDao

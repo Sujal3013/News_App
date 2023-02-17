@@ -1,4 +1,4 @@
-package com.example.newsapp
+package com.example.newsapp.modals
 
 data class Source(
     val id: String,

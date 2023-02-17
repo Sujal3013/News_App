@@ -2,7 +2,7 @@ package com.example.newsapp.Database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.newsapp.Article
+import com.example.newsapp.modals.Article
 
 @Dao
 interface ArticleDao {
@@ -14,5 +14,5 @@ interface ArticleDao {
     fun getAllArticles():LiveData<List<Article>>
 
     @Delete
-    suspend fun deleteArticle(article:Article)
+    suspend fun deleteArticle(article: Article)
 }
