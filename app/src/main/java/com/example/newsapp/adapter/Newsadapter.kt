@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newsapp.R
-import kotlinx.android.synthetic.main.item_artcile.*
 import com.example.newsapp.modals.Article
 import kotlinx.android.synthetic.main.item_artcile.view.*
 
@@ -55,8 +54,5 @@ class Newsadapter:RecyclerView.Adapter<Newsadapter.ArtcileViewHolder>() {
     fun setOnItemClickListener(listener:(Article)->Unit){
         onItemClickListener=listener
     }
-
-
-
 
 }
