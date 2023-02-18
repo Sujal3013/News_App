@@ -12,7 +12,7 @@ import com.example.ui.Newsviewmodel
 
 class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
-    lateinit var viewModel: Newsviewmodel
+    var viewModel: Newsviewmodel?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel=(activity as MainActivity).viewModel

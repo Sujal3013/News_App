@@ -11,7 +11,7 @@ import com.example.ui.Newsviewmodel
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
-    lateinit var viewModel:Newsviewmodel
+    var viewModel:Newsviewmodel?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

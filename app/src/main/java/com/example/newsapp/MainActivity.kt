@@ -13,7 +13,7 @@ import com.example.ui.newsvieewmodelprviderfactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var viewModel: Newsviewmodel
+    var viewModel: Newsviewmodel?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         val repository=newsrepository(Article_Database(this))
         val viewModelProviderFactory=newsvieewmodelprviderfactory(repository)
-        viewModel=ViewModelProvider(this,viewModelProviderFactory).get(Newsviewmodel::class.java)
+        viewModel = ViewModelProvider(this,viewModelProviderFactory)[Newsviewmodel::class.java]
 
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
     }

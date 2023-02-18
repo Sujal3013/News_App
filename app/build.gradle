@@ -50,7 +50,7 @@ dependencies {
     kapt "androidx.room:room-compiler:2.5.0"
 
     //Kotlin Extensions and Coroutines support for Room
-    runtimeOnly("androidx.room:room-ktx:2.5.0-beta02")
+    implementation("androidx.room:room-ktx:2.5.0")
 
 
     //Coroutines
