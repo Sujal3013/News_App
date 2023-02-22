@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -70,7 +71,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 is Resource.Success->{
                     hideProgressBar()
                     response.data?.let{
-                            newsResponse -> newsadapter.differ.submitList(newsResponse.articles.toList())
+                            newsResponse -> newsadapter.differ.submitList(newsResponse.articles.toMutableList())
                             val totalPages=newsResponse.totalResults / Constants.QUERY_PAGE_SIZE +2
                         isLastPage=viewModel?.searchNewsPage==totalPages
                         if(isLastPage){
@@ -81,7 +82,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 is Resource.Error->{
                     hideProgressBar()
                     response.message?.let{
-                            message-> Log.e(TAG,"An error occured : $message")
+                            message -> Toast.makeText(activity,"An error occuered: $message", Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading->{

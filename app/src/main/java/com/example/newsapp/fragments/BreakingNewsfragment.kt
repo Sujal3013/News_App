@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
@@ -47,9 +48,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_newsfragment) {
                 is Resource.Success->{
                     hideProgressBar()
                     response.data?.let{
-                        newsResponse -> newsadapter.differ.submitList(newsResponse.articles.toList())
+                        newsResponse -> newsadapter.differ.submitList(newsResponse.articles.toMutableList())
                         val totalPages=newsResponse.totalResults / QUERY_PAGE_SIZE +2
-                        isLastPage=viewModel?.breakingNewsPage==totalPages
+                        isLastPage=(viewModel?.breakingNewsPage==totalPages)
                         if(isLastPage){
                             rvBreakingNews.setPadding(0,0,0,0)
                         }
@@ -58,7 +59,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_newsfragment) {
                 is Resource.Error->{
                     hideProgressBar()
                     response.message?.let{
-                        message-> Log.e(TAG,"An error occured : $message")
+                        message-> Toast.makeText(activity,"An error occuered: $message",Toast.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Loading->{
